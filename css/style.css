@@ -1,93 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap');
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #d2b48c, #f5f5dc);
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #3e2723;
+  overflow-x: hidden;
+}
+
+/* Animated gradient background */
+.background {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(-45deg, #d7b89a, #f5e1c8, #c99c7a, #f7d6af);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  z-index: -2;
+}
+
+/* Floating coffee beans container */
+.beans {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Coffee bean style */
+.bean {
+  position: absolute;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/4/45/Coffee_bean_icon.svg') no-repeat center/contain;
+  opacity: 0.4;
+  animation: floatBean linear infinite;
+}
+
+@keyframes floatBean {
+  0% { transform: translateY(110vh) rotate(0deg); }
+  100% { transform: translateY(-20vh) rotate(360deg); }
+}
+
+/* Gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Header */
 header {
-    background: #6f4e37;
-    padding: 20px;
-    text-align: center;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  text-align: center;
+  padding: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  color: #4e342e;
+  letter-spacing: 1px;
 }
 
-/* Menu Section */
-.menu {
-    background: white;
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    animation: fadeIn 1s ease-in-out;
+/* Menu card */
+.menu-card {
+  max-width: 400px;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  animation: fadeIn 1.5s ease forwards;
+  transform: translateY(30px);
+  position: relative;
 }
 
-.menu h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #6f4e37;
-    font-size: 1.8rem;
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Menu Items */
+.menu-card h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4e342e;
+}
+
+/* Menu items */
 .menu-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    transition: transform 0.2s ease, background 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(78, 52, 46, 0.2);
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu-item:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .menu-item:hover {
-    background: #f8f1e7;
-    transform: scale(1.02);
-}
-
-.price {
-    font-weight: bold;
-    color: #6f4e37;
+  transform: scale(1.02);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.6);
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
-    color: #555;
-    margin-top: auto;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Steam effect */
+.menu-card::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 200px;
+  top: -80px;
+  left: calc(50% - 50px);
+  background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+  animation: steamRise 5s infinite ease-in-out;
+  opacity: 0.5;
 }
 
-/* Responsive */
-@media (max-width: 500px) {
-    .menu {
-        width: 90%;
-    }
-    header {
-        font-size: 1.2rem;
-    }
+@keyframes steamRise {
+  0% { transform: translateY(0) scale(1); opacity: 0.5; }
+  50% { transform: translateY(-20px) scale(1.1); opacity: 0.2; }
+  100% { transform: translateY(0) scale(1); opacity: 0.5; }
 }
