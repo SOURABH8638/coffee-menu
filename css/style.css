@@ -1,133 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap');
-
 body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  color: #3e2723;
-  overflow-x: hidden;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #d2a679, #b58863);
+    overflow-x: hidden;
 }
 
-/* Animated gradient background */
-.background {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(-45deg, #d7b89a, #f5e1c8, #c99c7a, #f7d6af);
-  background-size: 400% 400%;
-  animation: gradientMove 15s ease infinite;
-  z-index: -2;
-}
-
-/* Floating coffee beans container */
+/* Floating beans container */
 .beans {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  overflow: hidden;
-  z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
 }
 
-/* Coffee bean style */
 .bean {
-  position: absolute;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/4/45/Coffee_bean_icon.svg') no-repeat center/contain;
-  opacity: 0.4;
-  animation: floatBean linear infinite;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: url('https://i.imgur.com/ZT8Y8N4.png') no-repeat center/contain;
+    animation: floatBean 12s linear infinite;
+    opacity: 0.8;
 }
+
+.bean:nth-child(1) { left: 10%; animation-duration: 10s; }
+.bean:nth-child(2) { left: 30%; animation-duration: 14s; }
+.bean:nth-child(3) { left: 50%; animation-duration: 12s; }
+.bean:nth-child(4) { left: 70%; animation-duration: 16s; }
+.bean:nth-child(5) { left: 90%; animation-duration: 11s; }
 
 @keyframes floatBean {
-  0% { transform: translateY(110vh) rotate(0deg); }
-  100% { transform: translateY(-20vh) rotate(360deg); }
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-10vh) rotate(360deg); }
 }
 
-/* Gradient animation */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Menu Card */
+.menu-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px 40px;
+    width: 300px;
+    margin: 100px auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-/* Header */
-header {
-  text-align: center;
-  padding: 20px;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  color: #4e342e;
-  letter-spacing: 1px;
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #4b2e2e;
+    position: relative;
+    z-index: 1;
 }
 
-/* Menu card */
-.menu-card {
-  max-width: 400px;
-  margin: 60px auto;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  animation: fadeIn 1.5s ease forwards;
-  transform: translateY(30px);
-  position: relative;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
 }
 
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    font-size: 1rem;
 }
 
-.menu-card h2 {
-  font-family: 'Playfair Display', serif;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #4e342e;
+td:last-child {
+    text-align: right;
 }
 
-/* Menu items */
-.menu-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(78, 52, 46, 0.2);
-  font-weight: 600;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.menu-item:last-child {
-  border-bottom: none;
-}
-
-.menu-item:hover {
-  transform: scale(1.02);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  background: rgba(255,255,255,0.6);
-}
-
-/* Footer */
 footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
 }
 
-/* Steam effect */
-.menu-card::before {
-  content: "";
-  position: absolute;
-  width: 100px;
-  height: 200px;
-  top: -80px;
-  left: calc(50% - 50px);
-  background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
-  animation: steamRise 5s infinite ease-in-out;
-  opacity: 0.5;
-}
+/* --- Mobile Styles --- */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
 
-@keyframes steamRise {
-  0% { transform: translateY(0) scale(1); opacity: 0.5; }
-  50% { transform: translateY(-20px) scale(1.1); opacity: 0.2; }
-  100% { transform: translateY(0) scale(1); opacity: 0.5; }
+    .menu-container {
+        width: 90%;
+        padding: 15px 20px;
+        margin: 60px auto;
+    }
+
+    td {
+        font-size: 0.9rem;
+        padding: 6px;
+    }
+
+    .bean {
+        width: 25px;
+        height: 25px;
+    }
 }
