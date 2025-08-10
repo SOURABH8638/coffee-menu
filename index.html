@@ -1,39 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nature of Coffee</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nature of Coffee</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(to bottom, #d2a679, #c18f65);
+            color: #3e2723;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Floating beans */
+        .bean {
+            position: absolute;
+            width: 40px;
+            opacity: 0.15;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            from { transform: translateY(-50px) rotate(0deg); }
+            to { transform: translateY(120vh) rotate(360deg); }
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        header img {
+            vertical-align: middle;
+            width: 30px;
+            margin-right: 8px;
+        }
+
+        main {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #8d6e63;
+            padding: 8px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .menu-item {
+                font-size: 1rem;
+            }
+            header {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="background"></div>
+    <!-- Floating coffee beans -->
+    <img src="beans.png" class="bean" style="left: 10%; animation-delay: 0s;">
+    <img src="beans.png" class="bean" style="left: 50%; animation-delay: 5s;">
+    <img src="beans.png" class="bean" style="left: 80%; animation-delay: 10s;">
 
-  <!-- Floating Beans Layer -->
-  <div class="beans">
-    <div class="bean" style="left: 10%; animation-duration: 12s; width: 25px; height: 25px;"></div>
-    <div class="bean" style="left: 25%; animation-duration: 15s; width: 35px; height: 35px;"></div>
-    <div class="bean" style="left: 40%; animation-duration: 18s; width: 20px; height: 20px;"></div>
-    <div class="bean" style="left: 60%; animation-duration: 14s; width: 30px; height: 30px;"></div>
-    <div class="bean" style="left: 80%; animation-duration: 20s; width: 28px; height: 28px;"></div>
-  </div>
+    <header>
+        <img src="coffee-icon.png" alt="Coffee Icon">
+        NATURE OF COFFEE
+    </header>
 
-  <header>
-    <h1>☕ NATURE OF COFFEE</h1>
-  </header>
+    <main>
+        <h2>Our Menu</h2>
+        <div class="menu-item"><span>COLD COFFEE</span><span>₹50.00</span></div>
+        <div class="menu-item"><span>HOT COFFEE</span><span>₹20.00</span></div>
+        <div class="menu-item"><span>BOURNVITA</span><span>₹25.00</span></div>
+        <div class="menu-item"><span>COLD BOURNVITA</span><span>₹30.00</span></div>
+    </main>
 
-  <main>
-    <div class="menu-card">
-      <h2>Our Menu</h2>
-      <div class="menu-item"><span>COLD COFFEE</span><span>50.00</span></div>
-      <div class="menu-item"><span>HOT COFFEE</span><span>20.00</span></div>
-      <div class="menu-item"><span>BOURNVITA</span><span>25.00</span></div>
-      <div class="menu-item"><span>COLD BOURNVITA</span><span>30.00</span></div>
-    </div>
-  </main>
-
-  <footer>
-    <p>© 2025 NATURE OF COFFEE. All Rights Reserved.</p>
-  </footer>
+    <footer>
+        © 2025 NATURE OF COFFEE. All Rights Reserved.
+    </footer>
 </body>
 </html>
